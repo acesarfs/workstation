@@ -30,25 +30,38 @@
       autoclean: yes
       autoremove: yes
 
-  - name: Instalação de pacotes via apt
-    apt: name="{{ item }}" state=latest update_cache=yes
+  - name: Instala pacotes
+    apt: name={{ item }} state=installed
     with_items:
+      - terminator
+      - vim
       - transmission-gtk
       - terminator
       - gtkterm
       - vlc
       - kazam
-      - fritzing
+        #- fritzing
       - gimp
-      - inkscape
+        #- inkscape
       - audacity
-      - r-base
+        #- r-base
       - thunderbird
-      - nautilus-dropbox
-      - obs-studio
+        #- nautilus-dropbox
+        #- obs-studio
+
+  - name: Instala Spotify
+    apt_key:
+      keyserver: keyserver.ubuntu.com
+      id: 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90 
+    apt_repository:
+      repo: deb http://repository.spotify.com stable non-free
+      state: present
+    apt:
+      name: spotify-client
+      state: present
 
   roles:
-   - cmprescott.chrome
-   - ferrarimarco.virtualbox
-   - infOpen.vagrant
-   - oefenweb.rstudio
+          #- cmprescott.chrome
+          #- ferrarimarco.virtualbox
+          #- infOpen.vagrant
+          #- oefenweb.rstudio

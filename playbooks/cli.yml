@@ -7,8 +7,8 @@
   vars:
 
     # global vars
-    workstation_user: thiago
-    workstation_home: /home/thiago
+    workstation_user: acesarfs
+    workstation_home: /home/acesarfs
     
     # geerlingguy.php-versions
     php_version: '7.3'
@@ -289,4 +289,4 @@
 
     # workstation
     - include_role:
-        name: local.workstation
+            name: local.workstation
